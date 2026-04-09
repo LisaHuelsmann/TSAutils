@@ -20,7 +20,7 @@ detrend <- function(x) {
 #' @param x A numerical vector plotted on y axis
 #' @return No return value, called for side effects (a plot).
 #' @export
-plot.trend <- function(t, x) {
+plot_trend <- function(t, x) {
   x.lab = ''
   y.lab = ''
   regr <- lm(x ~ t)
