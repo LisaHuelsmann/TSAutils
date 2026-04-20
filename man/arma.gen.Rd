@@ -7,5 +7,5 @@
 arma.gen(n, ar = 0, ma = 0, gen = rnorm, ...)
 }
 \description{
-Generate ARMA data
+interesting
 }

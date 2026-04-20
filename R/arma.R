@@ -1,5 +1,8 @@
 
 #' Generate ARMA data
+#'
+#' interesting
+#'
 #' @export
 arma.gen <- function(n, ar=0, ma=0, gen=rnorm, ...) {
   p <- length(ar)
