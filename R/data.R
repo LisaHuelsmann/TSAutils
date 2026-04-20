@@ -19,7 +19,7 @@
 #' Global monthly mean atmospheric CO2 concentration
 #'
 #' A monthly time series of global mean atmospheric carbon dioxide (CO2)
-#' concentration values, expressed in parts per million (ppm).
+#' concentration values at sea level, expressed in parts per million (ppm).
 #' The dataset spans from 1979 to 2025 and is indexed by fractional year.
 #'
 #' @format A data frame with 564 rows and 2 variables:
@@ -34,5 +34,5 @@
 #' The dataset contains monthly observations of global atmospheric CO2
 #' concentration.
 #'
-#' @source Obtained from ...
+#' @source Obtained from https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_gl.txt.
 "CO2_global"

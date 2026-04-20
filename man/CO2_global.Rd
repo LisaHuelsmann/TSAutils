@@ -14,14 +14,14 @@ in parts per million (ppm).}
 }
 }
 \source{
-Obtained from ...
+Obtained from https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_gl.txt.
 }
 \usage{
 CO2_global
 }
 \description{
 A monthly time series of global mean atmospheric carbon dioxide (CO2)
-concentration values, expressed in parts per million (ppm).
+concentration values at sea level, expressed in parts per million (ppm).
 The dataset spans from 1979 to 2025 and is indexed by fractional year.
 }
 \details{
