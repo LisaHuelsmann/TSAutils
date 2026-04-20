@@ -14,3 +14,25 @@
 #' }
 #' @source Holger Lange
 "weather_Hurdal"
+
+
+#' Global monthly mean atmospheric CO2 concentration
+#'
+#' A monthly time series of global mean atmospheric carbon dioxide (CO2)
+#' concentration values, expressed in parts per million (ppm).
+#' The dataset spans from 1979 to 2025 and is indexed by fractional year.
+#'
+#' @format A data frame with 564 rows and 2 variables:
+#' \describe{
+#'   \item{time}{Numeric. Time expressed as fractional year
+#'   (for example, 1979.042 for approximately January 1979).}
+#'   \item{CO2}{Numeric. Global monthly mean atmospheric CO2 concentration,
+#'   in parts per million (ppm).}
+#' }
+#'
+#' @details
+#' The dataset contains monthly observations of global atmospheric CO2
+#' concentration.
+#'
+#' @source Obtained from ...
+"CO2_global"
