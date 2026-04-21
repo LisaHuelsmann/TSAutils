@@ -47,9 +47,9 @@
 #' @examples
 #' \dontrun{
 #' x <- cumsum(rnorm(100, mean = 0.1, sd = 1))
-#' MannKendall_stability_plot(x, n = 10, k = 5)
+#' MannKendall_stability(x, n = 10, k = 5)
 #' }
-MannKendall_stability_plot <- function(x, n, k) {
+MannKendall_stability <- function(x, n, k) {
   lens <- length(x) - 1:n * k
   mkp <- sapply(lens, function(l) MannKendall(x[1:l]))
   mks <- sapply(lens, function(l) sens.slope(x[1:l])$estimate)
