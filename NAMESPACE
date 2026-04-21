@@ -3,7 +3,6 @@
 S3method(hist,normal)
 S3method(plot,arma)
 S3method(plot,autocorrelations)
-S3method(plot,cutoff)
 S3method(plot,deseason)
 S3method(plot,diff.coefficients)
 S3method(plot,hurst)
