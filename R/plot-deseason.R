@@ -34,7 +34,7 @@
 #' plot.deseason(t, x, d = 365)
 #'
 #' @export
-plot.deseason = function(t, x, d, n = 40) {
+plot_deseason = function(t, x, d, n = 40) {
   p = d
   dummy = deseason(t, x, p)
   dummy.loess = loess(dummy ~ t, span = 0.3)
