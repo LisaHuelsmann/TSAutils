@@ -80,8 +80,8 @@ plot_deseason = function(t, x, d, n = 40) {
     lty = 1,
     col = c('black', 'red')
   )
-  hist.normal(x, n)
-  hist.normal(dummy, n)
+  hist_normal(x, n)
+  hist_normal(dummy, n)
   par(op)
 }
 
