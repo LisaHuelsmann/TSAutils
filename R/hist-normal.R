@@ -22,10 +22,10 @@
 #'
 #' @examples
 #' x <- rnorm(1000)
-#' hist.normal(x)
+#' hist_normal(x)
 #'
 #' @export
-hist.normal <- function(x, n = 40) {
+hist_normal <- function(x, n = 40) {
   low <- floor(min(x))
   high <- ceiling(max(x))
   rng <- 0:n * (high - low) / n + low
