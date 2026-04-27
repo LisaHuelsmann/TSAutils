@@ -2,10 +2,35 @@
 % Please edit documentation in R/hist-normal.R
 \name{hist.normal}
 \alias{hist.normal}
-\title{Hist normal}
+\title{Histogram with density and normal curve}
 \usage{
 \method{hist}{normal}(x, n = 40)
 }
+\arguments{
+\item{x}{Numeric vector of observations.}
+
+\item{n}{Integer. Number of bins used for the histogram. Defaults to 40.}
+}
+\value{
+No return value. The function is called for its side effect of
+producing a plot.
+}
 \description{
-Hist normal
+Plots a histogram of a numeric vector with an overlaid kernel density
+estimate and a fitted normal distribution curve.
+}
+\details{
+The function creates a histogram with \code{n} bins spanning the range of the
+data. It overlays:
+\itemize{
+\item a kernel density estimate (red line), scaled to match histogram counts
+\item a normal distribution curve (blue line) based on the sample mean and variance
+}
+
+The normal curve is computed using an internal helper function.
+}
+\examples{
+x <- rnorm(1000)
+hist.normal(x)
+
 }

@@ -49,6 +49,7 @@
 #' x <- cumsum(rnorm(100, mean = 0.1, sd = 1))
 #' MannKendall.stability(x, n = 10, k = 5)
 #' }
+#' @export
 MannKendall.stability <- function(x, n, k) {
   lens <- length(x) - 1:n * k
   mkp <- sapply(lens, function(l) MannKendall(x[1:l]))

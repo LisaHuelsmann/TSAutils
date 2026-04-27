@@ -2,10 +2,46 @@
 % Please edit documentation in R/plot-deseason.R
 \name{plot.deseason}
 \alias{plot.deseason}
-\title{Plot deseason}
+\title{Plot original and deseasonalized time series}
 \usage{
 \method{plot}{deseason}(t, x, d, n = 40)
 }
+\arguments{
+\item{t}{Numeric vector of time values (e.g., decimal years).}
+
+\item{x}{Numeric vector of observations.}
+
+\item{d}{Integer. Number of seasonal bins per year (e.g., 365 for daily data).}
+
+\item{n}{Integer. Number of bins for the histograms. Defaults to 40.}
+}
+\value{
+No return value. The function is called for its side effect of
+producing plots.
+}
 \description{
-Plot deseason
+Visualizes a time series before and after removal of its seasonal cycle.
+The function produces four plots: the original data with a smooth trend,
+the deseasonalized data with a smooth trend, and histograms (with density
+and normal curve overlays) for both series.
+}
+\details{
+The seasonal cycle is removed using \code{\link[=deseason]{deseason()}}, which groups data into
+\code{d} seasonal bins and subtracts the corresponding mean seasonal component.
+A LOESS smoother is applied to both the original and deseasonalized series
+to highlight trends.
+
+The resulting figure layout contains:
+\itemize{
+\item Original time series with LOESS smooth
+\item Deseasonalized time series with LOESS smooth
+\item Histogram of original data with density and normal curve
+\item Histogram of deseasonalized data with density and normal curve
+}
+}
+\examples{
+x <- rnorm(1000)
+t <- seq(2000, 2002, length.out = 1000)
+plot.deseason(t, x, d = 365)
+
 }

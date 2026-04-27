@@ -2,10 +2,36 @@
 % Please edit documentation in R/hist-normal.R
 \name{histnorm}
 \alias{histnorm}
-\title{Histnorm???}
+\title{Normal curve scaled to histogram counts (internal)}
 \usage{
 histnorm(x, scale = 1)
 }
-\description{
-Histnorm???
+\arguments{
+\item{x}{Numeric vector of observations.}
+
+\item{scale}{Numeric scaling factor. Defaults to 1. Can be adjusted to better
+match histogram scaling.}
 }
+\value{
+A function of a single numeric argument \code{t} that evaluates the scaled
+normal density based on \code{x}.
+}
+\description{
+Computes a normal (Gaussian) curve based on the mean and variance of a
+numeric vector and returns it as a function. The resulting function can be
+used to overlay a normal curve on a histogram.
+}
+\details{
+The returned function represents a normal distribution with mean
+\code{mean(x)} and variance \code{var(x)}, scaled by the sample size and the
+\code{scale} parameter. It is primarily intended for visual comparison with
+histograms.
+}
+\examples{
+x <- rnorm(100)
+h <- hist(x)
+f <- histnorm(x)
+curve(f, add = TRUE, col = "red")
+
+}
+\keyword{internal}
