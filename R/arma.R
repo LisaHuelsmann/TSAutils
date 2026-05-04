@@ -159,11 +159,11 @@ arma_plot <- function(n = 5000,
   )
   par(mar = c(3, 4, 0, 0) + 0.1)
   acf(x,
-      lwd = 6,
+      lwd = 4,
       lag.max = lag.max,
       ylim = c(-1, 1))
   pacf(x,
-       lwd = 6,
+       lwd = 4,
        lag.max = lag.max,
        ylim = c(-1, 1))
 }
