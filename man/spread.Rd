@@ -2,10 +2,33 @@
 % Please edit documentation in R/arma.R
 \name{spread}
 \alias{spread}
-\title{Calculate spread??}
+\title{Distribute a Total Value Across Lags}
 \usage{
 spread(total, length = 1)
 }
+\arguments{
+\item{total}{Numeric. Total value to distribute.}
+
+\item{length}{Integer. Number of elements (lags).}
+}
+\value{
+Numeric vector of length \code{length}, where each element
+equals \code{total / length}.
+}
 \description{
-Calculate spread??
+Creates a vector of equal values that sum to a specified total.
+Useful for constructing AR or MA coefficient vectors where the
+total influence is fixed but distributed across multiple lags.
+}
+\details{
+This function is useful for teaching how the distribution of
+coefficients across lags affects the behavior of AR and MA processes.
+}
+\examples{
+spread(0.9, length = 3)
+# c(0.3, 0.3, 0.3)
+
+# Use in AR models
+arma_plot(ar = spread(0.9, length = 5))
+
 }
