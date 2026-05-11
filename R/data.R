@@ -74,3 +74,36 @@
 #' head(meteo_Harz)
 #' summary(meteo_Harz)
 "meteo_Harz"
+
+
+#' Sensible heat flux at Hurdal in 2024
+#'
+#' A half-hourly time series of sensible heat flux \eqn{H} measured in 2024
+#' using eddy covariance at the tower site in Hurdal.
+#'
+#' The sensible heat flux was calculated from vertical wind velocity,
+#' air temperature, and air density. Positive values indicate a downward
+#' heat flux, meaning that the system gains heat.
+#'
+#' @format A data frame with 17,568 rows and 1 variable:
+#' \describe{
+#'   \item{H}{Sensible heat flux in \eqn{W m^{-2}}. Positive values indicate
+#'   downward heat flux.}
+#' }
+#'
+#' @details
+#' The data have a temporal resolution of 30 minutes and cover the full year 2024
+#' (including leap year).
+#'
+#' @source
+#' Eddy covariance measurements from the tower in Hurdal.
+#'
+#'
+#' @examples
+#' data(heatflux_Hurdal)
+#' head(heatflux_Hurdal)
+#' plot(heatflux_Hurdal$H, type = "l",
+#'      ylab = expression(H~"(W"~m^{-2}~")"),
+#'      main = "Sensible heat flux at Hurdal, 2024")
+"heatflux_Hurdal"
+
