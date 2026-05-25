@@ -37,7 +37,7 @@ logspace <- function(n, min=1, max=exp(1)) {
 
 #' Hurst rescaled
 #' @export
-hurst.rescaled.range <- function (x, windows=10, sizes=50, min.size=10, logkmin=0.5) {
+hurst_rescaled_range <- function (x, windows=10, sizes=50, min.size=10, logkmin=0.5) {
   rs <- function(t, k) {
     win <- portion(x, t+1, t+k)
     rng <- range(cumsum(ztrans(win)))
@@ -66,13 +66,13 @@ hurst.rescaled.range <- function (x, windows=10, sizes=50, min.size=10, logkmin=
 
 #' Plot Hurst rescaled
 #' @export
-plot.hurst.rescaled.range <- function(x) {
+hurst_plot_rescaled_range <- function(x) {
   # x11()
   plot(x, type="l", lwd=2, main="Input Data", ylab="Value")
   # x11()
   par(mfrow=c(2, 2))
   acf(x, lwd=6)
-  rs.stuff <- hurst.rescaled.range(x)
+  rs.stuff <- hurst_rescaled_range(x)
   rs.lm <- lm(rs.stuff[,2] ~ rs.stuff[,1])
   b <- rs.lm$coefficients[1]
   plot(rs.stuff, main=paste("Hurst R/S Estimation, H~=", round(rs.lm$coefficients[2], digits=2)),
@@ -93,23 +93,23 @@ plot.hurst.rescaled.range <- function(x) {
 
 #' Hurst rs
 #' @export
-hurst.rs <- function(x, windows =10, sizes=50, min.size) {
-  rs.stuff <- hurst.rescaled.range(x)
+hurst_rs <- function(x, windows =10, sizes=50, min.size) {
+  rs.stuff <- hurst_rescaled_range(x)
   rs.lm <- lm(rs.stuff[,2] ~ rs.stuff[,1])
   round(as.vector(rs.lm$coefficients[2]), digits=4)
   }
 
 #' Hurst aggregated variances
 #' @export
-hurst.aggvar <- function(x, sizes=50) {
-  rs.stuff <- hurst.aggregated.variance(x, sizes=50)
+hurst_aggvar <- function(x, sizes=50) {
+  rs.stuff <- hurst_aggregated_variance(x, sizes=50)
   rs.lm <- lm(rs.stuff[,2] ~ rs.stuff[,1])
   round(as.vector((rs.lm$coefficients[2]+2)/2), digits=4)
 }
 
 #' #' Hurst aggregated variances helper
 #' @export
-hurst.aggregated.variance <- function(x, sizes=50, kmin=10) {
+hurst_aggregated_variance <- function(x, sizes=50, kmin=10) {
   n <- length(x)
   ms <- floor(logspace(sizes, 2, floor(n/2)))
   result <- matrix(nrow=sizes, ncol=2)
@@ -128,11 +128,11 @@ hurst.aggregated.variance <- function(x, sizes=50, kmin=10) {
 
 #' Plot Hurst aggregated variances
 #' @export
-plot.hurst.aggregated.variance <- function(x) {
+hurst_plot_aggregated_variance <- function(x) {
   plot(x, type="l", lwd=2, main="Input Data", ylab="Value")
   par(mfrow=c(2, 2))
   acf(x, lwd=6)
-  rs.stuff <- hurst.aggregated.variance(x)
+  rs.stuff <- hurst_aggregated_variance(x)
   rs.lm <- lm(rs.stuff[,2] ~ rs.stuff[,1])
   b <- rs.lm$coefficients[1]
   plot(rs.stuff, main=paste("Hurst Variance Estimation, H~=", round((2+rs.lm$coefficients[2])/2, digits=2)),
@@ -154,7 +154,7 @@ plot.hurst.aggregated.variance <- function(x) {
 
 #' Plot Hurst
 #' @export
-plot.hurst <- function(x, method="rescaled.range", ...) {
-  get(paste("plot.hurst.", method, sep=""))(x, ...)
+hurst_plot <- function(x, method = "rescaled_range", ...) {
+  get(paste0("hurst_plot_", method))(x, ...)
 }
 
