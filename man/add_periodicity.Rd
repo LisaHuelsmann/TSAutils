@@ -6,6 +6,31 @@
 \usage{
 add_periodicity(x, period = floor(length(x)/2))
 }
+\arguments{
+\item{x}{Numeric vector. Input time series.}
+
+\item{period}{Integer. Period length of the sinusoidal component.}
+}
+\value{
+Numeric vector. Time series with an added periodic component.
+}
 \description{
-Add periodicity to a time series
+Adds a sinusoidal periodic component to a univariate time series.
+}
+\details{
+The periodic component is generated using a sine function:
+
+\deqn{
+\sin\left( \frac{2\pi t}{period} \right)
+}
+
+where \eqn{t} denotes the time index.
+
+Smaller values of \code{period} produce more rapidly oscillating behaviour.
+}
+\examples{
+x <- rnorm(200)
+y <- add_periodicity(x, period = 20)
+plot(y, type = "l")
+
 }

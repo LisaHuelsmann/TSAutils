@@ -2,10 +2,33 @@
 % Please edit documentation in R/fakedata.R
 \name{add_trend}
 \alias{add_trend}
-\title{Add trend to a time series}
+\title{Add a linear trend to a time series}
 \usage{
 add_trend(x, strength = 1)
 }
+\arguments{
+\item{x}{Numeric vector. Input time series.}
+
+\item{strength}{Numeric. Scaling factor controlling the strength of the
+trend relative to the standard deviation of \code{x}.}
+}
+\value{
+Numeric vector. Time series with an added linear trend.
+}
 \description{
-Add trend to a time series
+Adds a deterministic linear trend to a univariate time series. The trend
+increases linearly from 0 to a maximum value proportional to the standard
+deviation of the input series.
+}
+\details{
+The added trend is defined as a linear sequence ranging from
+\eqn{0} to \eqn{strength \times sd(x)}.
+
+Larger values of \code{strength} produce more pronounced trends.
+}
+\examples{
+x <- rnorm(200)
+y <- add_trend(x, strength = 2)
+plot(y, type = "l")
+
 }

@@ -2,10 +2,33 @@
 % Please edit documentation in R/fakedata.R
 \name{add_jumps}
 \alias{add_jumps}
-\title{Add jumps to a time series}
+\title{Add random jumps to a time series}
 \usage{
 add_jumps(x, strength = 1, rate = 2/3 * log(length(x)))
 }
+\arguments{
+\item{x}{Numeric vector. Input time series.}
+
+\item{strength}{Numeric. Scaling factor controlling the magnitude of jumps.}
+
+\item{rate}{Numeric. Rate parameter controlling the frequency of jumps.}
+}
+\value{
+Numeric vector. Time series with added random jumps.
+}
 \description{
-Add jumps to a time series
+Adds random level shifts ("jumps") to a univariate time series.
+}
+\details{
+Jump locations are generated from exponentially distributed waiting times.
+Between jump points, the process remains at a constant random level.
+
+Larger values of \code{strength} increase the magnitude of jumps, while larger
+values of \code{rate} increase their frequency.
+}
+\examples{
+x <- rnorm(200)
+y <- add_jumps(x, strength = 2)
+plot(y, type = "l")
+
 }
