@@ -18,7 +18,16 @@ be included.}
 Invisibly returns the fitted linear model.
 }
 \description{
-Creates diagnostic plots for Hurst exponent estimation using the aggregated
-variance method. The plot includes the input series, autocorrelation function,
-log-log regression plot, Q-Q plot of residuals, and residual plot.
+Creates a four-panel diagnostic plot for Hurst exponent estimation using
+the aggregated variance method. The panels show:
+\enumerate{
+\item the original time series,
+\item the autocorrelation function,
+\item the log-log regression used to estimate the Hurst exponent,
+\item residuals versus fitted values from the log-log regression.
+}
+}
+\details{
+The additional reference lines in the log-log plot are theoretical comparison
+lines and are not separate regression models.
 }

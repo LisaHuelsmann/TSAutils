@@ -188,9 +188,17 @@ estimate_hurst_rs <- function(x, windows = 10, sizes = 50,
 
 #' Plot rescaled range Hurst estimation
 #'
-#' Creates diagnostic plots for Hurst exponent estimation using rescaled range
-#' analysis. The plot includes the input series, autocorrelation function,
-#' log-log regression plot, Q-Q plot of residuals, and residual plot.
+#' Creates a four-panel diagnostic plot for Hurst exponent estimation using
+#' rescaled range analysis. The panels show:
+#' \enumerate{
+#'   \item the original time series,
+#'   \item the autocorrelation function,
+#'   \item the log-log regression used to estimate the Hurst exponent,
+#'   \item residuals versus fitted values from the log-log regression.
+#' }
+#'
+#' The additional reference lines in the log-log plot are theoretical comparison
+#' lines and are not separate regression models.
 #'
 #' @param x Numeric vector. The time series to analyse.
 #' @param windows Integer. Number of windows sampled for each window size.
@@ -204,11 +212,14 @@ estimate_hurst_rs <- function(x, windows = 10, sizes = 50,
 #' @export
 plot_hurst_rs <- function(x, windows = 10, sizes = 50,
                           min.size = 10, logkmin = 0.5) {
-  plot(x, type = "l", lwd = 2, main = "Input Data", ylab = "Value")
+  old_par <- par(no.readonly = TRUE)
+  on.exit(par(old_par))
 
   par(mfrow = c(2, 2))
 
-  acf(x, lwd = 6)
+  plot(x, type = "l", lwd = 2, main = "Input Data", ylab = "Value")
+
+  acf(x, lwd = 6, main = "Autocorrelation")
 
   rs_data <- hurst_rs_data(
     x = x,
@@ -224,7 +235,7 @@ plot_hurst_rs <- function(x, windows = 10, sizes = 50,
 
   plot(
     rs_data,
-    main = paste("Hurst R/S Estimation, H ~=", round(hurst, digits = 2)),
+    main = paste("R/S Estimation, H ~=", round(hurst, digits = 2)),
     xlab = "log(k)",
     ylab = "log(R/S)",
     ylim = range(c(intercept, na.omit(rs_data[, 2])))
@@ -240,17 +251,15 @@ plot_hurst_rs <- function(x, windows = 10, sizes = 50,
     lwd = 2,
     lty = c(1, 2, 3, 2),
     legend = c("estimated H", "H = 1", "H = 0.5", "H = 0"),
-    col = c("blue", "red", "green2", "magenta")
+    col = c("blue", "red", "green2", "magenta"),
+    cex = 0.8
   )
 
-  qqnorm(fit$residuals, main = "Normal Q-Q Plot of Residuals")
-  qqline(fit$residuals, lwd = 2)
-
   plot(
-    fit$fitted,
+    fit$fitted.values,
     fit$residuals,
-    main = "Scatter Plot of Residuals",
-    xlab = "Fitted",
+    main = "Residuals vs Fitted",
+    xlab = "Fitted values",
     ylab = "Residuals"
   )
   abline(h = 0, lwd = 2, col = "blue")
@@ -334,9 +343,17 @@ estimate_hurst_aggvar <- function(x, sizes = 50, kmin = 10) {
 
 #' Plot aggregated variance Hurst estimation
 #'
-#' Creates diagnostic plots for Hurst exponent estimation using the aggregated
-#' variance method. The plot includes the input series, autocorrelation function,
-#' log-log regression plot, Q-Q plot of residuals, and residual plot.
+#' Creates a four-panel diagnostic plot for Hurst exponent estimation using
+#' the aggregated variance method. The panels show:
+#' \enumerate{
+#'   \item the original time series,
+#'   \item the autocorrelation function,
+#'   \item the log-log regression used to estimate the Hurst exponent,
+#'   \item residuals versus fitted values from the log-log regression.
+#' }
+#'
+#' The additional reference lines in the log-log plot are theoretical comparison
+#' lines and are not separate regression models.
 #'
 #' @param x Numeric vector. The time series to analyse.
 #' @param sizes Integer. Number of different block sizes.
@@ -347,11 +364,14 @@ estimate_hurst_aggvar <- function(x, sizes = 50, kmin = 10) {
 #'
 #' @export
 plot_hurst_aggvar <- function(x, sizes = 50, kmin = 10) {
-  plot(x, type = "l", lwd = 2, main = "Input Data", ylab = "Value")
+  old_par <- par(no.readonly = TRUE)
+  on.exit(par(old_par))
 
   par(mfrow = c(2, 2))
 
-  acf(x, lwd = 6)
+  plot(x, type = "l", lwd = 2, main = "Input Data", ylab = "Value")
+
+  acf(x, lwd = 6, main = "Autocorrelation")
 
   aggvar_data <- hurst_aggvar_data(
     x = x,
@@ -365,7 +385,7 @@ plot_hurst_aggvar <- function(x, sizes = 50, kmin = 10) {
 
   plot(
     aggvar_data,
-    main = paste("Hurst Variance Estimation, H ~=", round(hurst, digits = 2)),
+    main = paste("Aggregated Variance, H ~=", round(hurst, digits = 2)),
     xlab = "log(m)",
     ylab = expression(log(s[m]^2)),
     ylim = range(c(intercept, na.omit(aggvar_data[, 2])))
@@ -381,17 +401,15 @@ plot_hurst_aggvar <- function(x, sizes = 50, kmin = 10) {
     lwd = 2,
     lty = c(1, 2, 3, 2),
     legend = c("estimated H", "H = 1", "H = 0.5", "H = 0"),
-    col = c("blue", "red", "green2", "magenta")
+    col = c("blue", "red", "green2", "magenta"),
+    cex = 0.8
   )
 
-  qqnorm(fit$residuals, main = "Normal Q-Q Plot of Residuals")
-  qqline(fit$residuals, lwd = 2)
-
   plot(
-    fit$fitted,
+    fit$fitted.values,
     fit$residuals,
-    main = "Scatter Plot of Residuals",
-    xlab = "Fitted",
+    main = "Residuals vs Fitted",
+    xlab = "Fitted values",
     ylab = "Residuals"
   )
   abline(h = 0, lwd = 2, col = "blue")
