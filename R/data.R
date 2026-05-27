@@ -107,3 +107,26 @@
 #'      main = "Sensible heat flux at Hurdal, 2024")
 "heatflux_Hurdal"
 
+
+#' Synthetic data for Fourier analysis
+#'
+#' A synthetic univariate time series used to illustrate discrete Fourier
+#' decomposition and reconstruction.
+#'
+#' @format A data frame with 30 rows and 2 variables:
+#' \describe{
+#'   \item{t}{Time index, from 1 to 30.}
+#'   \item{x}{Observed synthetic time series value.}
+#' }
+#'
+#' @details
+#' The series contains a small number of periodic components and is intended for
+#' teaching the interpretation of Fourier coefficients, dominant frequencies,
+#' and partial reconstruction from selected Fourier terms.
+#'
+#' @examples
+#' data(fourier_synthetic)
+#' plot(fourier_synthetic, type = "b", main = "Synthetic Data")
+#'
+#' @source Simulated data for teaching purposes.
+"fourier_synthetic"
