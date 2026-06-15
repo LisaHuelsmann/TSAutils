@@ -130,3 +130,31 @@
 #'
 #' @source Simulated data for teaching purposes.
 "fourier_synthetic"
+
+
+
+#' Draupner wave height time series
+#'
+#' A univariate time series of wave-height measurements from the Draupner
+#' platform in the North Sea.
+#'
+#' The object is stored as a [`ts`] time-series object.
+#'
+#' @format A time series object of class [`ts`].
+#' \describe{
+#'   \item{Time series start}{1}
+#'   \item{Time series end}{3.34375}
+#'   \item{Frequency}{2.133333}
+#'   \item{Values}{Wave-height measurements, in metres if stored in the original Draupner units.}
+#' }
+#'
+#' @source Draupner platform wave-height record.
+#'
+#' @examples
+#' data(waveheight_Draupner)
+#' plot(waveheight_Draupner)
+#'
+#' @docType data
+#' @keywords datasets
+#' @name waveheight_Draupner
+"waveheight_Draupner"
