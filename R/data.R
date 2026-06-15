@@ -142,9 +142,6 @@
 #'
 #' @format A time series object of class [`ts`].
 #' \describe{
-#'   \item{Time series start}{1}
-#'   \item{Time series end}{3.34375}
-#'   \item{Frequency}{2.133333}
 #'   \item{Values}{Wave-height measurements, in metres if stored in the original Draupner units.}
 #' }
 #'
