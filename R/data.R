@@ -155,3 +155,63 @@
 #' @keywords datasets
 #' @name waveheight_Draupner
 "waveheight_Draupner"
+
+
+
+#' Theoretical entropy-complexity bounds
+#'
+#' Theoretical lower and upper bounds of the permutation entropy-complexity
+#' plane for ordinal patterns with embedding dimensions \eqn{D = 4} and
+#' \eqn{D = 5}.
+#'
+#' These datasets are used as reference curves when plotting permutation
+#' entropy against permutation complexity.
+#'
+#' @format Each object is a data frame with two variables:
+#' \describe{
+#'   \item{PE}{Normalized permutation entropy.}
+#'   \item{MPR}{Permutation complexity.}
+#' }
+#'
+#' @details
+#' The four objects contain separate boundary curves:
+#' \describe{
+#'   \item{entropy_complexity_min_D4}{Lower bound for embedding dimension \eqn{D = 4}.}
+#'   \item{entropy_complexity_max_D4}{Upper bound for embedding dimension \eqn{D = 4}.}
+#'   \item{entropy_complexity_min_D5}{Lower bound for embedding dimension \eqn{D = 5}.}
+#'   \item{entropy_complexity_max_D5}{Upper bound for embedding dimension \eqn{D = 5}.}
+#' }
+#'
+#' The lower and upper curves are stored separately because they are not
+#' necessarily evaluated at the same permutation entropy values.
+#'
+#' @references
+#' Martín MT, Plastino A, Rosso OA (2006).
+#' Generalized statistical complexity measures:
+#' Geometrical and analytical properties.
+#' \emph{Physica A}, 369, 439--462.
+#'
+#' @examples
+#' data(entropy_complexity_min_D5)
+#' data(entropy_complexity_max_D5)
+#'
+#' plot(entropy_complexity_min_D5$PE,
+#'      entropy_complexity_min_D5$MPR,
+#'      type = "l",
+#'      xlab = "Permutation entropy",
+#'      ylab = "Permutation complexity")
+#'
+#' lines(entropy_complexity_max_D5$PE,
+#'       entropy_complexity_max_D5$MPR)
+#'
+#' @family Time Series Analysis course datasets
+#' @keywords datasets
+#'
+#' @name entropy_complexity_limits
+#' @rdname entropy_complexity_limits
+#' @aliases entropy_complexity_min_D4
+#' @aliases entropy_complexity_max_D4
+#' @aliases entropy_complexity_min_D5
+#' @aliases entropy_complexity_max_D5
+NULL
+
