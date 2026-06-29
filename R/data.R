@@ -185,12 +185,6 @@
 #' The lower and upper curves are stored separately because they are not
 #' necessarily evaluated at the same permutation entropy values.
 #'
-#' @references
-#' Martín MT, Plastino A, Rosso OA (2006).
-#' Generalized statistical complexity measures:
-#' Geometrical and analytical properties.
-#' \emph{Physica A}, 369, 439--462.
-#'
 #' @examples
 #' data(entropy_complexity_min_D5)
 #' data(entropy_complexity_max_D5)
@@ -214,4 +208,5 @@
 #' @aliases entropy_complexity_min_D5
 #' @aliases entropy_complexity_max_D5
 NULL
+
 

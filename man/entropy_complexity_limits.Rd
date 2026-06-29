@@ -48,11 +48,5 @@ lines(entropy_complexity_max_D5$PE,
       entropy_complexity_max_D5$MPR)
 
 }
-\references{
-Martín MT, Plastino A, Rosso OA (2006).
-Generalized statistical complexity measures:
-Geometrical and analytical properties.
-\emph{Physica A}, 369, 439--462.
-}
 \concept{Time Series Analysis course datasets}
 \keyword{datasets}
